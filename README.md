@@ -1,2 +1,2 @@
 # Linux-Scripts
-This Repository contain useful linux scripts
+This Repository contains useful linux scripts

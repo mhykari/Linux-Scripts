@@ -1,5 +1,5 @@
 # Find Server In SSH-Config Files
-This Repository contain a script to find the server you want to connect in ssh-config file with the command fs
+This Repository contains a script to find the server you want to connect in ssh-config file with the command fs
 
 ## How to Use:
 1- Make the fs.sh bash script file <br />
