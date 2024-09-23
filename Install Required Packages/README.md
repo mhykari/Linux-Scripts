@@ -1,4 +1,4 @@
-# Install Ubuntu/Debian Required Packaged Script
+# Install Ubuntu/Debian Required Packages Script
 This Repository contain a script to install your required packages on ubuntu/debian
 
 ## How to Use:
