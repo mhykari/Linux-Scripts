@@ -26,7 +26,6 @@ sudo apt install -y \
     tcpdump \
     traceroute \
 
-
 # Add any additional packages here
 # sudo apt install -y <package_name>
 
