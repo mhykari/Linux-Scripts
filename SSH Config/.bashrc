@@ -1,0 +1,1 @@
+export PATH="$PATH:/home/your_user/scripts"
