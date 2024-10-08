@@ -4,7 +4,7 @@
 current_user=$(whoami)
 
 # Set the username to connect to the remote host
-ssh_username="felan"  # You can modify this to any default username you want
+ssh_username="YOUR_SSH_USERNAME"  # You can modify this to any default username you want
 
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <last_two_octets_or_hostname>"
