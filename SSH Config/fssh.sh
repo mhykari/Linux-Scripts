@@ -4,7 +4,7 @@
 current_user=$(whoami)
 
 # Set the username to connect to the remote host
-ssh_username="YOUR_SSH-USERNAME"  # You can modify this to any default username you want
+ssh_username="felan"  # You can modify this to any default username you want
 
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <last_two_octets_or_hostname>"
@@ -19,8 +19,11 @@ if [ ! -f "$ssh_config" ]; then
     exit 1
 fi
 
-# Find matching hosts (case-insensitive search)
-matches=$(grep -iE "Host|HostName" "$ssh_config" | grep -iE "$search_term" -B 1 | grep "^Host " | awk '{print $2}')
+# Find matching hosts (case-insensitive search for Host entries only)
+matches=$(awk -v term="$search_term" '
+    BEGIN { IGNORECASE = 1 }
+    $1 == "Host" && $2 ~ term { print $2 }
+' "$ssh_config")
 
 # Check if any matches found
 if [ -z "$matches" ]; then
@@ -31,9 +34,18 @@ fi
 # Function to extract HostName and Port from the SSH config
 get_host_details() {
     local host=$1
-    host_ip=$(awk "/^Host $host/,/^$/ { if (\$1 == \"HostName\") print \$2 }" "$ssh_config")
-    host_port=$(awk "/^Host $host/,/^$/ { if (\$1 == \"Port\") print \$2 }" "$ssh_config")
-    
+    host_ip=$(awk -v h="$host" '
+        BEGIN { IGNORECASE = 1 }
+        $1 == "Host" && $2 == h { in_host = 1; next }
+        in_host && /^[ \t]*HostName/ { print $2; in_host = 0 }
+    ' "$ssh_config")
+
+    host_port=$(awk -v h="$host" '
+        BEGIN { IGNORECASE = 1 }
+        $1 == "Host" && $2 == h { in_host = 1; next }
+        in_host && /^[ \t]*Port/ { print $2; in_host = 0 }
+    ' "$ssh_config")
+
     # Default port is 22 if not defined
     if [ -z "$host_port" ]; then
         host_port=22
