@@ -6,9 +6,9 @@ This script search and finde the hostname in your ssh config file
 ### How to Use fs.sh file:
 1- Create the fs.sh bash script file <br />
 2- Run command "chmod +x fs.sh" <br />
-3- Add "export PATH=$PATH:path/to/script" to the .bashrc file ("~/.bashrc" or "~/.zshrc"<br />)
+3- Add "export PATH=$PATH:path/to/script" to the .bashrc file ("~/.bashrc" or "~/.zshrc")<br />
 4- Run the command "source ~/.bashrc" or "source ~/.zshrc"
-4- Use the the script with the command "fs something"  
+5- Use the the script with the command "fs something"  
   
 ## 2- Find and connect to the server in SSH-Config file fssh.sh script:
 This script find and connect automatically to the host.<br />
