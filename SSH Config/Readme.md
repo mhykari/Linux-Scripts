@@ -18,3 +18,8 @@ This script find and connect automatically to the host.<br />
 2- Run command "chmod +x fssh.sh" <br />
 3- Finde your server with directly run script "./fssh.sh <last_two_octets_or_hostname>" or use "fssh <last_two_octets_or_hostname>" command if you have added the path of script to .bashrc file by adding "export PATH=$PATH:path/to/script" to the .bashrc file <br />
 4- If just one host matches, you directly connect to the host, but if multiple hosts match, you can select the hosts and connect to it.<br />
+
+### How to use fssh-mobaxterm.sh scrip:  
+1- Open mobaxterm and enter command "open /home/mobaxterm/"  
+2- Place the script file there  
+3- If you are using ssh-key, place the key in the location used in script.
